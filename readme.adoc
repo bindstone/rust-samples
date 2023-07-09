@@ -1,0 +1,23 @@
+= Rust Samples
+
+This is an experimental project, trying different frameworks and technics on Rust.
+
+For development, I use cargo with:
+
+```
+cargo install cargo-watch
+```
+
+```
+cargo watch -q -c -w src/ -x run
+```
+
+== Todo Rust (rbatis)
+
+A simple Todo Backend API based on
+https://docs.rs/actix/latest/actix/[actix]
+with https://www.techempower.com/benchmarks/#section=ydata-r21[benchmarks]
+and based on https://github.com/rbatis/rbatis.
+If you look more for a JPA like approach, take a look on https://diesel.rs/guides/getting-started.
+
+__Rework:__ Review how to instantiate the TodoService in a correct Rust way.

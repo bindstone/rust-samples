@@ -1,0 +1,7 @@
+services:
+
+  postgres:
+    container_name: postgres
+    build: ./container/postgres
+    ports:
+      - "5432:5432"

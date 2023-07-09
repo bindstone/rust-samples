@@ -1,0 +1,37 @@
+### Get all Todo's
+GET http://127.0.0.1:8080/api/todo
+Accept: application/json
+
+### Get Todo by ID
+GET http://127.0.0.1:8080/api/todo/1
+Accept: application/json
+
+### Get Todo's with params (Page)
+GET http://127.0.0.1:8080/api/todo/params?page=1&limit=10
+
+### Add new Post
+POST http://127.0.0.1:8080/api/todo
+Content-Type: application/json
+
+{
+  "owner": "ME",
+  "name": "ME",
+  "description": "Learn Rust",
+  "status": "OPEN"
+}
+
+### Updata existing Post
+PUT http://127.0.0.1:8080/api/todo
+Content-Type: application/json
+
+{
+  "id": 1,
+  "owner": "ME2",
+  "name": "ME2",
+  "description": "Learn more Rust",
+  "status": "PROGRESS"
+}
+
+### Delete Post
+DELETE http://127.0.0.1:8080/api/todo/2
+Accept: application/json

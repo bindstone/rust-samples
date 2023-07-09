@@ -1,0 +1,23 @@
+[package]
+name = "todo_rbatis"
+description = "Rust TODO RBATIS API"
+version = "1.0.0"
+authors = ["bindstone <msbindstone@gmail.com>"]
+edition = "2021"
+license = "MIT"
+
+[dependencies]
+actix-cors = "0.6.4"
+actix-web = "4.3.1"
+chrono = { version = "0.4.26", features = ["serde"] }
+env_logger = "0.10.0"
+serde = { version = "1.0.164", features = ["derive"] }
+uuid = { version = "1.3.3", features = ["v4"] }
+once_cell = "1.18.0"
+
+rbs = { version = "4.3" }
+rbatis = { version = "4.3" }
+rbdc-pg = { version = "4.3" }
+
+log = "0.4"
+fast_log = "1.5"

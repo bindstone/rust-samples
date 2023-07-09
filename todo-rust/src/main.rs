@@ -5,6 +5,7 @@ use actix_web::middleware::Logger;
 mod health_check;
 mod todo;
 mod routes;
+pub mod context;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {

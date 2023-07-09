@@ -2,8 +2,10 @@ use actix_web::{HttpResponse, Responder, web};
 use actix_web::web::Json;
 use serde::Deserialize;
 
+use crate::context::CONTEXT;
 use crate::todo::todo::Todo;
 use crate::todo::todo_service::TodoService;
+use crate::todo_service;
 
 type TodoId = u64;
 
@@ -14,8 +16,7 @@ pub struct TodoParams {
 }
 
 pub async fn get_todo_list() -> impl Responder {
-    let mut service = TodoService::new();
-    let result = service.get_todo_list().await;
+    let result = todo_service!().get_todo_list().await;
     match result {
         Ok(list) => { HttpResponse::Ok().json(list) }
         Err(err) => { HttpResponse::BadRequest().json(err) }
@@ -23,8 +24,7 @@ pub async fn get_todo_list() -> impl Responder {
 }
 
 pub async fn get_todo_by_id(path: web::Path<TodoId>) -> impl Responder {
-    let mut service = TodoService::new();
-    let result = service.get_todo_by_id(path.into_inner()).await;
+    let result = todo_service!().get_todo_by_id(path.into_inner()).await;
     match result {
         Ok(todo) => {
             match todo {
@@ -39,8 +39,7 @@ pub async fn get_todo_by_id(path: web::Path<TodoId>) -> impl Responder {
 pub async fn get_page_todo(params: web::Query<TodoParams>) -> impl Responder {
     let page = params.page.to_owned().unwrap_or(0);
     let limit = params.limit.unwrap_or(20);
-    let mut service = TodoService::new();
-    let result = service.get_todo_page(page, limit).await;
+    let result = todo_service!().get_todo_page(page, limit).await;
     match result {
         Ok(page) => { HttpResponse::Ok().json(page) }
         Err(err) => { HttpResponse::BadRequest().json(err) }
@@ -48,8 +47,7 @@ pub async fn get_page_todo(params: web::Query<TodoParams>) -> impl Responder {
 }
 
 pub async fn create_todo(todo: Json<Todo>) -> impl Responder {
-    let mut service = TodoService::new();
-    let result = service.insert_todo(todo.0).await;
+    let result = todo_service!().insert_todo(todo.0).await;
     match result {
         Ok(todo) => { HttpResponse::Ok().json(todo) }
         Err(err) => { HttpResponse::BadRequest().json(err) }
@@ -57,9 +55,8 @@ pub async fn create_todo(todo: Json<Todo>) -> impl Responder {
 }
 
 pub async fn update_todo(todo: Json<Todo>) -> impl Responder {
-    let mut service = TodoService::new();
     let v = todo.0;
-    let result = service.update_todo(v).await;
+    let result = todo_service!().update_todo(v).await;
     match result {
         Ok(_) => { HttpResponse::Ok().finish() }
         Err(err) => { HttpResponse::BadRequest().json(err) }
@@ -67,8 +64,7 @@ pub async fn update_todo(todo: Json<Todo>) -> impl Responder {
 }
 
 pub async fn delete_todo(path: web::Path<TodoId>) -> impl Responder {
-    let mut service = TodoService::new();
-    let result = service.delete_todo_by_id(path.into_inner()).await;
+    let result = todo_service!().delete_todo_by_id(path.into_inner()).await;
     match result {
         Ok(_) => { HttpResponse::Ok().finish() }
         Err(err) => { HttpResponse::BadRequest().json(err) }

@@ -33,5 +33,5 @@ Content-Type: application/json
 }
 
 ### Delete Post
-DELETE http://127.0.0.1:8080/api/todo/2
+DELETE http://127.0.0.1:8080/api/todo/3
 Accept: application/json

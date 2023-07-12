@@ -21,3 +21,17 @@ and based on https://github.com/rbatis/rbatis.
 If you look more for a JPA like approach, take a look on https://diesel.rs/guides/getting-started.
 
 __Rework:__ Review how to instantiate the TodoService in a correct Rust way.
+
+== Rust Kafka
+
+A simple Rust Producer/Consumer application.
+
+Creation of a Kafka queue after starting the docker service:
+
+```
+kafka-topics --create \
+--replication-factor 1 \
+--partitions 5 \
+--topic learning-rust-topic \
+--bootstrap-server kafka:9092
+```

@@ -1,0 +1,10 @@
+[package]
+name = "consumer"
+description = "Consumer"
+version = "1.0.0"
+authors = ["bindstone <msbindstone@gmail.com>"]
+edition = "2021"
+license = "MIT"
+
+[dependencies]
+kafka = "0.9.0"

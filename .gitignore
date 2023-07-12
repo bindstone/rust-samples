@@ -3,4 +3,6 @@
 *.iml
 
 # Rust
-todo-rust/target
+/todo-rust/target
+/kafka-rust/producer/producer/target/
+/kafka-rust/consumer/consumer/target/

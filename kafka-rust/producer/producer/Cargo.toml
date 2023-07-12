@@ -1,0 +1,15 @@
+[package]
+name = "producer"
+description = "Rust Poducer Sample"
+version = "1.0.0"
+authors = ["bindstone <msbindstone@gmail.com>"]
+edition = "2021"
+license = "MIT"
+
+[dependencies]
+kafka = "0.9.0"
+reqwest = { version = "0.11.14", features = ["json"] }
+serde = { version = "1.0.152", features = ["derive"] }
+serde_json = "1.0.92"
+tokio = { version = "1.25.0", features = ["full"] }
+urlencoding = "2.1.2"
